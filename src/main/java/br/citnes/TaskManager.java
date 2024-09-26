@@ -18,10 +18,15 @@ public class TaskManager {
 
     private void loadTasks() {
         List<String> lines = new ArrayList<>();
+
+        if (!Files.exists(FILE_PATH)){
+            return;
+        }
+
         try {
             lines = Files.readAllLines(FILE_PATH);
         } catch (IOException e) {
-            System.out.println("Tasks file not found");
+            System.out.println("Error opening file " + e.getMessage());
         }
 
         for (String line : lines) {
@@ -48,7 +53,6 @@ public class TaskManager {
     }
 
     public void addTask(String description) {
-        System.out.println("Adding task> " + description);
         taskList.add(new Task(nextTaskId, description));
         nextTaskId += 1;
     }
