@@ -6,15 +6,15 @@ public class Task {
     private int id;
     private String description;
     private Status status;
-    private String createdAt;
-    private String updatedAt;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
     public Task(int id, String description) {
         this.id = id;
         this.description = description;
         this.status = Status.TODO;
-        this.createdAt = LocalDateTime.now().toString();
-        this.updatedAt = LocalDateTime.now().toString();
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
     }
 
     public Task(String[] parts) {
@@ -24,8 +24,8 @@ public class Task {
                 case "id" -> this.id = Integer.parseInt(prop[1]);
                 case "description" -> this.description = prop[1];
                 case "status" -> this.status = Status.valueOf(prop[1]);
-                case "createdAt" -> this.createdAt = prop[1];
-                case "updatedAt" -> this.updatedAt = prop[1];
+                case "createdAt" -> this.createdAt = LocalDateTime.parse(prop[1]);
+                case "updatedAt" -> this.updatedAt = LocalDateTime.parse(prop[1]);
             }
         }
     }
