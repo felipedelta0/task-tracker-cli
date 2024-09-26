@@ -31,15 +31,13 @@ public class Task {
     }
 
     public String toJson() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("{");
-        sb.append("\"id\": ").append(id).append(", ");
-        sb.append("\"description\": \"").append(description).append("\", ");
-        sb.append("\"status\": \"").append(status.toString()).append("\", ");
-        sb.append("\"createdAt\": \"").append(createdAt).append("\", ");
-        sb.append("\"updatedAt\": \"").append(updatedAt).append("\"");
-        sb.append("}");
-        return sb.toString();
+        return "{" +
+                "\"id\": " + id + ", " +
+                "\"description\": \"" + description + "\", " +
+                "\"status\": \"" + status.toString() + "\", " +
+                "\"createdAt\": \"" + createdAt + "\", " +
+                "\"updatedAt\": \"" + updatedAt + "\"" +
+                "}";
     }
 
     public int getId() {
